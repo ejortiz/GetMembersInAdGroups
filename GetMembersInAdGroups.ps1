@@ -1,6 +1,7 @@
 # Replace the text within the filter and add wilcards as necessary
 $groups=Get-ADGroup -Filter {name -like "*TEST*" -or name -like "*TEST2*" } `
-		-Properties Description, Name, SamAccountName, DistinguishedName, SID, ObjectGUID | Select Name, SamAccountName, DistinguishedName, SID, ObjectGUID
+		-Properties Description, Name, SamAccountName, DistinguishedName, SID, ObjectGUID | `
+		 Select Name, SamAccountName, DistinguishedName, SID, ObjectGUID
 
 # default script output to desktop, named "adgroupMembers.csv"
 $desktopPath = [Environment]::GetFolderPath("Desktop")
@@ -50,8 +51,7 @@ if($groups.GetType().IsArray)
 		}
 	}
 }
-# else, "groups" is only a group
-else
+else # else, "groups" is only a group
 {
 		$groupName = $groups.Name
 		foreach($element in $arrOfGroupMemberArrs[0])
