@@ -1,5 +1,6 @@
 # Replace the text within the filter and add wilcards as necessary
-$groups=Get-ADGroup -Filter {name -like "*TEST*" -or name -like "*TEST2*" } -Properties Description, Name, SamAccountName, DistinguishedName, SID, ObjectGUID | Select Name, SamAccountName, DistinguishedName, SID, ObjectGUID
+$groups=Get-ADGroup -Filter {name -like "*TEST*" -or name -like "*TEST2*" } `
+		-Properties Description, Name, SamAccountName, DistinguishedName, SID, ObjectGUID | Select Name, SamAccountName, DistinguishedName, SID, ObjectGUID
 
 # default script output to desktop, named "adgroupMembers.csv"
 $desktopPath = [Environment]::GetFolderPath("Desktop")
